@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8"
+          fx:controller="by.mksn.miapr.Controller">
+  <columnConstraints>
+    <ColumnConstraints/>
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints/>
+  </rowConstraints>
+  <AnchorPane prefHeight="650.0" prefWidth="800.0">
+    <Canvas fx:id="canvas" height="600.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#onCanvasMouseClicked"
+            onMouseMoved="#onCanvasMouseMove" width="600.0" AnchorPane.leftAnchor="0.0"
+            AnchorPane.topAnchor="0.0"/>
+    <Button layoutX="615.0" layoutY="14.0" mnemonicParsing="false" onAction="#generate" prefHeight="25.0"
+            prefWidth="171.0" text="Generate" AnchorPane.leftAnchor="615.0" AnchorPane.rightAnchor="15.0"
+            AnchorPane.topAnchor="15.0"/>
+    <Button layoutX="615.0" layoutY="54.0" mnemonicParsing="false" onAction="#validate" prefHeight="25.0"
+            prefWidth="171.0" text="Validate"/>
+    <Button layoutX="615.0" layoutY="141.0" mnemonicParsing="false" onAction="#clean" prefHeight="25.0"
+            prefWidth="171.0" text="Clean"/>
+    <Label fx:id="resultLabel" layoutX="615.0" layoutY="178.0" prefHeight="17.0" prefWidth="170.0" text="Label"
+           textAlignment="CENTER" textFill="RED">
+      <font>
+        <Font size="14.0"/>
+      </font>
+    </Label>
+    <Button layoutX="615.0" layoutY="97.0" mnemonicParsing="false" onAction="#synthesizeGrammar" prefHeight="25.0"
+            prefWidth="171.0" text="Synthesize grammar"/>
+    <Label fx:id="grammarLabel" layoutX="14.0" layoutY="613.0"/>
+  </AnchorPane>
+</GridPane>
