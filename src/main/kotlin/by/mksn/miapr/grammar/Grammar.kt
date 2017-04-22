@@ -90,6 +90,7 @@ class Grammar {
             result.append("${it.startElementType.name} -> " +
                     "${it.name}(${it.firstElementType.name}, " +
                     "${it.secondElementType.name}); ")
+            result.append("\n")
         })
         return result.toString()
     }

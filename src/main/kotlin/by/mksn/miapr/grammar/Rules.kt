@@ -33,6 +33,10 @@ class UpRule(
         secondElementType: ElementType
 ) : Rule(startElementType, firstElementType, secondElementType) {
 
+    companion object {
+        val NONE = UpRule(ElementType.NONE, ElementType.NONE, ElementType.NONE);
+    }
+
     override fun connect(first: Element, second: Element): Element {
         val resultLines = first.lines
         resultLines.addAll(second.lines)
@@ -41,7 +45,7 @@ class UpRule(
 
     override fun transformConnect(first: Element, second: Element): Element {
         makeSameLength(first, second)
-        first.move(0.0, second.startPosition.y + randomDouble(0.0, 2.0))
+        first.move(0.0, second.startPosition.y/* + randomDouble(0.0, 2.0)*/)
         return connect(first, second)
     }
 
@@ -69,6 +73,10 @@ class UpRule(
 
 class LeftRule(startElementType: ElementType, firstElementType: ElementType, secondElementType: ElementType) : Rule(startElementType, firstElementType, secondElementType) {
 
+    companion object {
+        val NONE = LeftRule(ElementType.NONE, ElementType.NONE, ElementType.NONE);
+    }
+
     override fun connect(first: Element, second: Element): Element {
         val resultLines = first.lines
         resultLines.addAll(second.lines)
@@ -80,7 +88,7 @@ class LeftRule(startElementType: ElementType, firstElementType: ElementType, sec
     }
 
     override fun transformConnect(first: Element, second: Element): Element {
-        second.move(first.length + randomDouble(1.0, 5.0), 0.0)
+        second.move(first.length/* + randomDouble(1.0, 5.0)*/, 0.0)
         return connect(first, second)
     }
 

@@ -6,6 +6,10 @@ interface Type {
 
 open class ElementType(val name: String) : Type {
 
+    companion object {
+        val NONE = ElementType("NONE")
+    }
+
     override fun isTerminal() = false
 
     fun isSame(compared: ElementType) =

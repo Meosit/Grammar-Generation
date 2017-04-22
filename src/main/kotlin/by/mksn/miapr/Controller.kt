@@ -49,18 +49,6 @@ class Controller {
 
     }
 
-    fun validate(actionEvent: ActionEvent) {
-        if (grammar != null) {
-            if (grammar!!.imageIsCorrect(drawnElements)) {
-                resultLabel.text = "Image is correct."
-            } else {
-                resultLabel.text = "Image is not correct."
-            }
-        } else {
-            resultLabel.text = "No grammar."
-        }
-    }
-
     fun clean(actionEvent: ActionEvent?) {
         drawer.cleanCanvas()
         resultLabel.text = ""
@@ -81,8 +69,8 @@ class Controller {
             val factFrom = drawer.getFactPoint(from!!)
             val factTo = drawer.getFactPoint(to)
             val line = Line(factFrom, factTo)
-            val drawedElement = Grammar.getTerminalElement(line)
-            drawnElements.add(drawedElement)
+            val drawnElement = Grammar.getTerminalElement(line)
+            drawnElements.add(drawnElement)
 
             from = null
         }
@@ -90,13 +78,13 @@ class Controller {
 
     fun synthesizeGrammar(actionEvent: ActionEvent) {
         val listCopy = drawnElements.map { it }
-
         try {
-            val generator = GrammarGenerator(listCopy)
+            val generator = GrammarGenerator(listCopy.toMutableList())
             grammar = generator.grammar
-            grammarLabel.text = grammar!!.toString()
+            grammarLabel.text = generator.grammar.toString()
         } catch (e: InvalidElementException) {
-            grammarLabel.text = e.toString()
+            resultLabel.text = e.toString()
+            grammarLabel.text = ""
         }
 
     }

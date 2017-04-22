@@ -1,11 +1,16 @@
 package by.mksn.miapr.grammar
 
-class GrammarGenerator(drawnElements: List<Element>) {
+class GrammarGenerator(drawnElements: MutableList<Element>) {
 
     val grammar = Grammar()
     private val rulesVocabulary = arrayListOf<Rule>()
     private var elementNumber = 1
 
+    init {
+        rulesVocabulary.add(LeftRule.NONE)
+        rulesVocabulary.add(UpRule.NONE)
+        grammar.startElementType = connectElementToGrammar(drawnElements)
+    }
 
     private fun connectElementToGrammar(elements: MutableList<Element>): ElementType {
         if (elements.size == 1) {
@@ -51,20 +56,15 @@ class GrammarGenerator(drawnElements: List<Element>) {
     }
 
     private fun isFirstInRule(rule: Rule, candidate: Element, elements: List<Element>) =
-            elements.none { isDifferentElementFirstInRule(rule, candidate, it) }
+            elements.none { isDifferentElementInRule(rule, candidate, it) }
 
     private fun isSecondInRule(rule: Rule, candidate: Element, elements: List<Element>) =
-            elements.none { isDifferentElementSecondInRule(rule, candidate, it) }
+            elements.none { isDifferentElementInRule(rule, it, candidate) }
 
-    private fun isDifferentElementFirstInRule(rule: Rule, candidate: Element, element: Element) =
+    private fun isDifferentElementInRule(rule: Rule, candidate: Element, element: Element) =
             !candidate.startPosition.isSame(element.startPosition)
                     && !candidate.endPosition.isSame(element.endPosition)
                     && !rule.isRulePositionPare(candidate, element)
-
-    private fun isDifferentElementSecondInRule(rule: Rule, candidate: Element, element: Element) =
-            !candidate.startPosition.isSame(element.startPosition)
-                    && !candidate.endPosition.isSame(element.endPosition)
-                    && !rule.isRulePositionPare(element, candidate)
 
 }
 
