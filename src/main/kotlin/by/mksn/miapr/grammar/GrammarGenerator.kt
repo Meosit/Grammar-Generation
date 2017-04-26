@@ -29,7 +29,7 @@ class GrammarGenerator(drawnElements: MutableList<Element>) {
             throw InvalidElementException()
         }
 
-        val result = ElementType("O" + elementNumber++.toString())
+        val result = ElementType("R" + elementNumber++.toString())
         grammar.addElementType(result)
         grammar.addRule(resultRule.getRule(result))
 

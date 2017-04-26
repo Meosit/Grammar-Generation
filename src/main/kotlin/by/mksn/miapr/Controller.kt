@@ -79,7 +79,7 @@ class Controller {
     fun synthesizeGrammar(actionEvent: ActionEvent) {
         val listCopy = drawnElements.map { it }
         try {
-            val generator = GrammarGenerator(listCopy.toMutableList())
+            val generator = GrammarGenerator(listCopy.reversed().toMutableList())
             grammar = generator.grammar
             grammarLabel.text = generator.grammar.toString()
         } catch (e: InvalidElementException) {

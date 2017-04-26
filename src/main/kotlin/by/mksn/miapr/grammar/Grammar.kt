@@ -6,7 +6,7 @@ import java.lang.Math.abs
 private val HORIZONTAL_LINE = "horizontal"
 private val VERTICAL_LINE = "vertical"
 private val SLASH_LINE = "slash"
-private val BACK_SLASH_LINE = "back_slash"
+private val BACK_SLASH_LINE = "backslash"
 
 class Grammar {
 
